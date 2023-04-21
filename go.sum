@@ -1,2 +1,6 @@
-github.com/Bragoony/is105sem03 v0.0.0-20230419115523-16e04daa73ef h1:r9NxAa0wBl4CAdtNsPJ7weCTZLDOfNTdPF1j+N/7lbE=
-github.com/Bragoony/is105sem03 v0.0.0-20230419115523-16e04daa73ef/go.mod h1:+SR4fDXohglSqmFh9Tc7laMfm3X2j5VbGfuJaUJ0L6M=
+github.com/Trym123/funtemps v0.0.0-20230218155934-dd7d26385d85 h1:tn1MGxdxnbGPIXCQNaWiiTByLXOC1ZAOrE8OkqKPD80=
+github.com/Trym123/funtemps v0.0.0-20230218155934-dd7d26385d85/go.mod h1:IyLegamfGNkFk1GVOj2VdLE5bFSzy0FqdQ9AmnsDpiw=
+github.com/Trym123/is105sem03 v0.0.0-20230421065607-1b57330b7c24 h1:7RRi9bAwo8QpahSVMnhmGE8S6lFrNYTfIXWa620MUro=
+github.com/Trym123/is105sem03 v0.0.0-20230421065607-1b57330b7c24/go.mod h1:6b5dHTvOrJrn5ZwBsSY0c4mmTvCcECtObgql1Bfaprk=
+github.com/Trym123/minyr v0.0.0-20230414083431-23fbb3489dc6 h1:8ir+2sUJMFRe+WZQ2tM5F1vZKL07KlhbNPDRAzQ0XwM=
+github.com/Trym123/minyr v0.0.0-20230414083431-23fbb3489dc6/go.mod h1:y6D237RE/MxfomdAcfut1GS658XgJEFHmEUHx9DzHn4=

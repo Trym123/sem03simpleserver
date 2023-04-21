@@ -5,7 +5,8 @@ import (
 	"log"
 	"net"
 	"sync"
-	"github.com/Bragoony/is105sem03/mycrypt"
+	"github.com/Trym123/is105sem03/mycrypt"
+	"github.com/Trym123/minyr/yr"
 )
 
 func main() {
@@ -41,7 +42,21 @@ func main() {
 					log.Println("Dekrypter melding: ", string(dekryptertMelding))
 					switch msg := string(dekryptertMelding); msg {
   				        case "ping":
-						_, err = c.Write([]byte("pong"))
+						//_, err = c.Write([]byte("pong"))
+						krypterMelding := mycrypt.Krypter([]rune(string("pong")), mycrypt.ALF_SEM03, len(mycrypt.ALF_SEM03)-4)
+						log.Println("krypter melding: ", string(krypterMelding))
+						_, err = conn.Write([]byte(string(krypterMelding)))
+					case "Kjevik;SN39040;18.03.2022 01:50;6":
+						newString, err := yr.CelsiusToFahrenheitLine("Kjevik;SN39040;18.03.2022 01:50;6")
+						if err != nil {
+							log.Fatal(err)
+						}
+							//dividedString := strings.Split("Kjevik;SN39040;18.03.2022 01:50;6", ";")
+							
+							//if fahr, err := strconv.ParseFloat(dividedString[3], 64); err == nil {
+							//log.Println(conv.CelsiusToFarhenheit(fahr)) }
+							//joinedString := strings.Join(dividedString, ";")
+						_, err = conn.Write([]byte(string(newString)))
 					default:
 						_, err = c.Write(buf[:n])
 					}
