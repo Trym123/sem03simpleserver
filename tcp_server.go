@@ -5,13 +5,15 @@ import (
 	"log"
 	"net"
 	"sync"
+	"github.com/Trym123/is105sem03/mycrypt"
+	"github.com/Trym123/minyr/yr"
 )
 
 func main() {
 
 	var wg sync.WaitGroup
 
-	server, err := net.Listen("tcp", "172.17.0.3:8080")
+	server, err := net.Listen("tcp", "172.17.0.2:8080")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -36,9 +38,25 @@ func main() {
 						}
 						return // fra for løkke
 					}
-					switch msg := string(buf[:n]); msg {
+					dekryptertMelding := mycrypt.Krypter([]rune(string(buf[:n])), mycrypt.ALF_SEM03, len(mycrypt.ALF_SEM03)-4)
+					log.Println("Dekrypter melding: ", string(dekryptertMelding))
+					switch msg := string(dekryptertMelding); msg {
   				        case "ping":
-						_, err = c.Write([]byte("pong"))
+						//_, err = c.Write([]byte("pong"))
+						krypterMelding := mycrypt.Krypter([]rune(string("pong")), mycrypt.ALF_SEM03, len(mycrypt.ALF_SEM03)-4)
+						log.Println("krypter melding: ", string(krypterMelding))
+						_, err = conn.Write([]byte(string(krypterMelding)))
+					case "Kjevik;SN39040;18.03.2022 01:50;6":
+						newString, err := yr.CelsiusToFahrenheitLine("Kjevik;SN39040;18.03.2022 01:50;6")
+						if err != nil {
+							log.Fatal(err)
+						}
+							//dividedString := strings.Split("Kjevik;SN39040;18.03.2022 01:50;6", ";")
+							
+							//if fahr, err := strconv.ParseFloat(dividedString[3], 64); err == nil {
+							//log.Println(conv.CelsiusToFarhenheit(fahr)) }
+							//joinedString := strings.Join(dividedString, ";")
+						_, err = conn.Write([]byte(string(newString)))
 					default:
 						_, err = c.Write(buf[:n])
 					}
@@ -48,6 +66,7 @@ func main() {
 						}
 						return // fra for løkke
 					}
+				
 				}
 			}(conn)
 		}
